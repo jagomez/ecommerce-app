@@ -1,0 +1,20 @@
+<h1><%= @product.name %></h1>
+<h2><%= @product.description %></h2>
+
+<p><img src="<%= @product.photo %>" height="200" width="200"/></p>
+
+<p class = "<%= @product.sale_class %>">Price: <%= @product.currency %>
+			<%= @product.sale %></p>
+			<p>Subtotal: </p>
+			<p>Tax: </p>
+			<p>Total:</p>
+
+<%= form_for @order do |f| %>
+	<%= f.label :quantity%>
+	<%= f.text_field :quantity %>
+	
+	<%= f.hidden_field :product_id, value: @product.id %>
+	
+	<%= f.submit "Buy Now!" %>
+
+<% end %>
