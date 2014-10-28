@@ -1,6 +1,9 @@
 class Product < ActiveRecord::Base
 	belongs_to :vendor
 	has_many :orders
+	has_many :category_products
+	has_many :categories, :through => :category_products
+	
 	
 	attr_accessor :options #<=will automatically add atributes
 

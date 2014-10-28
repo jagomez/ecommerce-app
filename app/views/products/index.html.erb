@@ -1,4 +1,10 @@
 <h1>Welcome to my Store</h1>
+<h5>Categories</h5>
+<ul>
+  <% @categories.each do |category| %>
+    <li><a href="/?category_name=<%= category.category_name %>"><%= category.category_name %></li>
+  <% end %>
+</ul>
 
 <div class="row">
 <% @product.each do |product| %>

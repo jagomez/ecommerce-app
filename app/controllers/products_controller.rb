@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 	def index
 		@product = Product.all
+		@product = Product.joins(:categories).where("categories.category_name = ?", params[:category_name]) if params[:category_name]
+		@categories = Category.all
 	end
 	
 	def new
@@ -21,6 +23,7 @@ class ProductsController < ApplicationController
 		flash[:success] = "Product successfully added."
     	redirect_to "/products/#{product.id}"
 	end
+	
 
 	def edit
 		@product = Product.find_by(:id => params[:id])
